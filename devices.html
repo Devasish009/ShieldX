@@ -1,0 +1,322 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>SheildX - VPNs & Firewalls</title>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap');
+        :root {
+            --bg-dark: #0a111f;
+            --bg-panel: #141d2f;
+            --color-primary: #29a9ff;
+            --color-primary-light: #3cb4ff;
+            --color-text: #e6e6e6;
+            --color-muted: #8a9ba8;
+            --border-radius: 8px;
+            --transition: 0.3s ease;
+        }
+        * {
+            box-sizing: border-box;
+        }
+        body {
+            margin: 0;
+            font-family: 'Inter', sans-serif;
+            background-color: var(--bg-dark);
+            color: var(--color-text);
+            line-height: 1.5;
+        }
+        a {
+            text-decoration: none;
+            color: var(--color-primary);
+            cursor: pointer;
+        }
+        a:hover {
+            color: var(--color-primary-light);
+        }
+        header {
+            display: flex;
+            justify-content: space-evenly;
+            align-items: center;
+            background-color: #101824;
+            padding: 1rem 2rem;
+            position: sticky;
+            top: 0;
+            z-index: 100;
+            box-shadow: 0 2px 10px rgb(0 0 0 / 0.4);
+        }
+        header .logo {
+            display: flex;
+            align-items: center;
+            font-weight: 700;
+            font-size: 1.25rem;
+            color: var(--color-text);
+        }
+        header .logo svg {
+            width: 28px;
+            height: 28px;
+            margin-right: 8px;
+            fill: var(--color-primary);
+        }
+        nav {
+            display: flex;
+            align-items: center;
+            gap: 1.25rem;
+        }
+        nav > ul {
+            list-style: none;
+            display: flex;
+            gap: 1.25rem;
+            margin: 0;
+            padding: 0;
+            font-weight: 500;
+            font-size: 1rem;
+        }
+        nav ul li {
+            position: relative;
+        }
+        nav ul li a {
+            color: var(--color-text);
+            padding: 0.3rem;
+            transition: color var(--transition);
+        }
+        nav ul li:hover > a {
+            color: var(--color-primary);
+        }
+
+        nav ul li ul {
+            position: absolute;
+            top : 130%;
+            left: 0;
+            background: var(--bg-panel);
+            border-radius: var(--border-radius);
+            box-shadow: 0 4px 20px  rgb(0 0 0 / 0.5);
+            list-style: none;
+            padding: 0.5rem 0;
+            margin: 0;
+            min-width: 140px;
+            opacity: 0;
+            pointer-events: none;
+            transition: opacity var(--transition);
+            z-index: 200;
+        }
+
+        .btn-contact {
+            border: 1.75px solid var(--color-text);
+            background-color: transparent;
+            color: var(--color-text);
+            padding: 0.4rem 1.15rem;
+            font-weight: 600;
+            border-radius: var(--border-radius);
+            transition: all var(--transition);
+        }
+        .btn-contact:hover {
+            background-color: var(--color-primary);
+            border-color: var(--color-primary);
+            color: #0a111f;
+        }
+        main {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 2rem 1rem 4rem 1rem;
+        }
+        h1.section-title {
+            font-weight: 700;
+            font-size: 1.5rem;
+            margin-bottom: 1.5rem;
+        }
+        .products-container {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(230px, 1fr));
+            gap: 1.5rem;
+        }
+        .product-card {
+            background-color: var(--bg-panel);
+            border-radius: var(--border-radius);
+            padding: 1.75rem 1.5rem 2rem 1.5rem;
+            text-align: center;
+            box-shadow: 0 0 16px #0a111f;
+            transition: box-shadow var(--transition);
+            display: flex;
+            flex-direction: column;
+            align-items: center; /* Center items horizontally */
+        }
+        .product-card:hover {
+            box-shadow: 0 0 24px var(--color-primary-light);
+        }
+        .product-card img {
+            max-width: 100%; /* Ensure the image fits within the card */
+            height: auto; /* Maintain aspect ratio */
+            margin-bottom: 1rem; /* Space between image and title */
+        }
+        .product-title {
+            font-weight: 600;
+            font-size: 1.1rem;
+            color: var(--color-text);
+            margin-bottom: 0.3rem;
+        }
+        .product-price {
+            font-weight: 700;
+            font-size: 1.2rem;
+            color: var(--color-primary);
+            margin-bottom: 1rem;
+        }
+        .buy-btn {
+            background-color: var(--color-primary);
+            border: none;
+            padding: 0.4rem 1.35rem;
+            border-radius: var(--border-radius);
+            color: #0a111f;
+            font-weight: 600;
+            cursor: pointer;
+            transition: background-color var(--transition);
+        }
+        .buy-btn:hover {
+            background-color: var(--color-primary-light);
+        }
+    </style>
+</head>
+<body>
+<header role="banner">
+  <a href="page.html" class="logo" aria-label="SheildX Homepage">
+    <svg viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="M12 2L3 6v5c0 5 3 8 9 11 6-3 9-6 9-11V6l-9-4zM9 16v-4h6v4H9z"/></svg>
+    SheildX
+  </a>
+  <nav role="navigation" aria-label="Main Navigation">
+    <ul>
+      <li><a href="#">Home</a></li>
+      <li>
+        <a href="#" aria-haspopup="true" aria-expanded="false" aria-controls="shop-submenu">Shop ▾</a>
+        <ul id="shop-submenu" role="menu" aria-label="Shop Submenu">
+          <li><a href="#" role="menuitem">VPNs & Firewalls</a></li>
+          <li><a href="#" role="menuitem">Anti-Malware Software</a></li>
+          <li><a href="#" role="menuitem">Secure Routers & Devices</a></li>
+          <li><a href="#" role="menuitem">Complete Cyber-Security Kits</a></li>
+        </ul>
+      </li>
+      <li><a href="#">About</a></li>
+    </ul>
+  </nav>
+  <a href="contact.html" class="btn-contact" role="button" aria-label="Contact SheildX">Contact</a>
+</header>
+<main role="main">
+    <h1 class="section-title">Secure Routers & Devices</h1><br>
+    <h2 class="section-title">Secure Routers</h2>
+    <div class="products-container">
+        <article class="product-card" role="article" aria-label="Peplink Balance 20X">
+            <img src="C:\Devasish_html\sheildX\images\Peplink Balance 20X.avif" alt="Peplink Balance 20X">
+            <h3 class="product-title">Peplink Balance 20X</h3>
+            <p class="product-price">₹51,725</p>
+            <button class="buy-btn" type="button" aria-label="buy Secure Routers">Buy Now</button>
+        </article>
+        <article class="product-card" role="article" aria-label="Turris Omnia">
+            <img src="C:\Devasish_html\sheildX\images\turris omnia.jpeg" alt="turris omnia">
+            <h3 class="product-title">Turris Omnia</h3>
+            <p class="product-price">₹49,307</p>
+            <button class="buy-btn" type="button" aria-label="buy Secure Routers">Buy Now</button>
+        </article>
+        <article class="product-card" role="article" aria-label="Netgear Nighthawk RS700S (Wi-Fi 7)">
+            <img src="C:\Devasish_html\sheildX\images\Netgear Nighthawk RS700S (Wi-Fi 7)" alt="Netgear Nighthawk RS700S (Wi-Fi 7)">
+            <h3 class="product-title"></h3>
+            <p class="product-price">₹1,59,999</p>
+            <button class="buy-btn" type="button" aria-label="buy Secure Routers">Buy Now</button>
+        </article>
+        <article class="product-card" role="article" aria-label="ASUS ROG Rapture GT-AXE16000">
+            <img src="C:\Devasish_html\sheildX\images\ASUS ROG Rapture GT-AXE16000.jpeg" alt="ASUS ROG Rapture GT-AXE16000">
+            <h3 class="product-title">ASUS ROG Rapture GT-AXE16000</h3>
+            <p class="product-price">₹84,172</p>
+            <button class="buy-btn" type="button" aria-label="buy Secure Routers">Buy Now</button>
+        </article>
+        <article class="product-card" role="article" aria-label="ASUS RT-AX68U">
+            <img src="C:\Devasish_html\sheildX\images\ASUS RT-AX68U.jpeg" alt="ASUS RT-AX68U">
+            <h3 class="product-title">ASUS RT-AX68U</h3>
+            <p class="product-price">₹29,999</p>
+            <button class="buy-btn" type="button" aria-label="buy Secure Routers">Buy Now</button>
+        </article>
+        <article class="product-card" role="article" aria-label="TP-Link Archer AX11000">
+            <img src="C:\Devasish_html\sheildX\images\TP-Link Archer AX11000.jpeg" alt="TP-Link Archer AX11000">
+            <h3 class="product-title">TP-Link Archer AX11000</h3>
+            <p class="product-price">₹3,999</p>
+            <button class="buy-btn" type="button" aria-label="buy Secure Routers">Buy Now</button>
+        </article>
+        <article class="product-card" role="article" aria-label="GL.iNet Slate AX (GL-AXT1800)">
+            <img src="C:\Devasish_html\sheildX\images\GL.iNet Slate AX (GL-AXT1800).jpeg" alt="GL.iNet Slate AX (GL-AXT1800)">
+            <h3 class="product-title">GL.iNet Slate AX (GL-AXT1800)</h3>
+            <p class="product-price">₹14,999</p>
+            <button class="buy-btn" type="button" aria-label="buy Secure Routers">Buy Now</button>
+        </article>
+        <article class="product-card" role="article" aria-label="ExpressVPN Aircove">
+            <img src="C:\Devasish_html\sheildX\images\ExpressVPN Aircove.jpeg" alt="ExpressVPN Aircove">
+            <h3 class="product-title">ExpressVPN Aircove</h3>
+            <p class="product-price">₹6,999</p>
+            <button class="buy-btn" type="button" aria-label="buy Secure Routers">Buy Now</button>
+        </article>
+        <article class="product-card" role="article" aria-label="Gryphon AX">
+            <img src="C:\Devasish_html\sheildX\images\Gryphon AX.jpeg" alt="Gryphon AX">
+            <h3 class="product-title">Gryphon AX</h3>
+            <p class="product-price">₹39,999</p>
+            <button class="buy-btn" type="button" aria-label="buy Secure Routers">Buy Now</button>
+        </article>
+
+        <article class="product-card" role="article" aria-label="Teltonika RUT 956">
+            <img src="C:\Devasish_html\sheildX\images\Teltonika RUT series RUT 956.webp" alt="">
+            <h3 class="product-title">Teltonika RUT 956</h3>
+            <p class="product-price">₹19,999</p>
+            <button class="buy-btn" type="button" aria-label="buy Secure Routers">Buy Now</button>
+        </article>
+
+        <article class="product-card" role="article" aria-label="Dray Tek Vigor 2927">
+            <img src="C:\Devasish_html\sheildX\images\DrayTek Vigor 2927.jpeg" alt="Dray Tek Vigor 2927">
+            <h3 class="product-title">Dray Tek Vigor 2927</h3>
+            <p class="product-price">₹31,999</p>
+            <button class="buy-btn" type="button" aria-label="buy Secure Routers">Buy Now</button>
+        </article>
+        
+        <article class="product-card" role="article" aria-label="Cisco CAT 1522">
+            <img src="C:\Devasish_html\sheildX\images\Cisco CAT 1522.jpeg" alt="Cisco CAT 1522">
+            <h3 class="product-title">Cisco CAT 1522</h3>
+            <p class="product-price">₹9,999</p>
+            <button class="buy-btn" type="button" aria-label="buy Secure Routers">Buy Now</button>
+        </article>
+    </div>
+    <h2>Secure Firewall Devices</h2>
+    <div class="products-container">
+        <article class="product-card" role="article" aria-label="OPNsense or pfSense on a dedicated mini-PC/router">
+            <img src="C:\Devasish_html\sheildX\images\HUNSN Micro Firewall Appliance, Mini PC, OPNsense, VPN, Router PC, Intel Celeron N4500, RS40, AES-NI, 4 x 2.5GbE I225, Console, 4 x USB, Mini DP, HDMI, SIM Slot, 8G RAM, 512G SSD.jpeg" alt="">
+            <h3 class="product-title">OPNsense or pfSense on a dedicated mini-PC/router</h3>
+            <p class="product-price">₹1,04,599</p>
+            <button class="buy-btn" type="button" aria-label="buy Secure Routers">Buy Now</button>
+        </article>
+
+
+        <article class="product-card" role="article" aria-label="Fortinet FortiGate firewalls">
+            <img src="C:\Devasish_html\sheildX\images\Fortinet FortiGate firewalls.jpeg" alt="Fortinet FortiGate firewalls">
+            <h3 class="product-title">Fortinet FortiGate firewalls</h3>
+            <p class="product-price">₹1,59,999</p>
+            <button class="buy-btn" type="button" aria-label="buy Secure Routers">Buy Now</button>
+        </article>
+
+        <article class="product-card" role="article" aria-label="WatchGuard Firebox T20 Security Appliance">
+            <img src="C:\Devasish_html\sheildX\images\WatchGuard Firebox T20 Security Appliance with 3YR Standard Support (WGT20003-WW).jpeg" alt="WatchGuard Firebox T20 Security Appliance">
+            <h3 class="product-title">WatchGuard Firebox T20 Security Appliance</h3>
+            <p class="product-price">₹85,999</p>
+            <button class="buy-btn" type="button" aria-label="buy Secure Routers">Buy Now</button>
+        </article>
+
+        <article class="product-card" role="article" aria-label="Ubiquiti Networks Unifi Security Gateway Pro">
+            <img src="C:\Devasish_html\sheildX\images\Ubiquiti Networks Unifi Security Gateway Pro (White).jpeg" alt="Ubiquiti Networks Unifi Security Gateway Pro">
+            <h3 class="product-title">Ubiquiti Networks Unifi Security Gateway Pro</h3>
+            <p class="product-price">₹39,999</p>
+            <button class="buy-btn" type="button" aria-label="buy Secure Routers">Buy Now</button>
+        </article>
+
+        <article class="product-card" role="article" aria-label="SonicWall NSa series firewalls">
+            <img src="C:\Devasish_html\sheildX\images\SonicWall NSa series firewalls.jpeg" alt="SonicWall NSa series firewalls">
+            <h3 class="product-title">SonicWall NSa series firewalls</h3>
+            <p class="product-price">₹49,999</p>
+            <button class="buy-btn" type="button" aria-label="buy Secure Routers">Buy Now</button>
+        </article>
+    </div>
+</main>
+</body>
+</html>

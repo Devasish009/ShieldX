@@ -1,0 +1,195 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>SheildX Contact</title>
+<style>
+    @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap');
+        :root {
+            --bg-dark: #0a111f;
+            --bg-panel: #141d2f;
+            --color-primary: #29a9ff;
+            --color-primary-light: #3cb4ff;
+            --color-text: #e6e6e6;
+            --color-muted: #8a9ba8;
+            --border-radius: 8px;
+            --transition: 0.3s ease;
+        }
+        * {
+            box-sizing: border-box;
+        }
+        body {
+            margin: 0;
+            font-family: 'Inter', sans-serif;
+            background-color: var(--bg-dark);
+            color: var(--color-text);
+            line-height: 1.5;
+        }
+        a {
+            text-decoration: none;
+            color: var(--color-primary);
+            cursor: pointer;
+        }
+        a:hover {
+            color: var(--color-primary-light);
+        }
+        header {
+            display: flex;
+            justify-content: space-evenly;
+            align-items: center;
+            background-color: #101824;
+            padding: 1rem 2rem;
+            position: sticky;
+            top: 0;
+            z-index: 100;
+            box-shadow: 0 2px 10px rgb(0 0 0 / 0.4);
+        }
+        header .logo {
+            display: flex;
+            align-items: center;
+            font-weight: 700;
+            font-size: 1.25rem;
+            color: var(--color-text);
+        }
+        header .logo svg {
+            width: 28px;
+            height: 28px;
+            margin-right: 8px;
+            fill: var(--color-primary);
+        }
+        nav {
+            display: flex;
+            align-items: center;
+            gap: 1.25rem;
+        }
+        nav > ul {
+            list-style: none;
+            display: flex;
+            gap: 1.25rem;
+            margin: 0;
+            padding: 0;
+            font-weight: 500;
+            font-size: 1rem;
+        }
+        nav ul li {
+            position: relative;
+        }
+        nav ul li a {
+            color: var(--color-text);
+            padding: 0.3rem;
+            transition: color var(--transition);
+        }
+        nav ul li:hover > a {
+            color: var(--color-primary);
+        }
+
+        nav ul li ul {
+            position: absolute;
+            top : 130%;
+            left: 0;
+            background: var(--bg-panel);
+            border-radius: var(--border-radius);
+            box-shadow: 0 4px 20px  rgb(0 0 0 / 0.5);
+            list-style: none;
+             padding: 0.5rem 0;
+            margin: 0;
+            min-width: 140px;
+            opacity: 0;
+            pointer-events: none;
+            transition: opacity var(--transition);
+            z-index: 200;
+        }
+
+        .btn-contact {
+            border: 1.75px solid var(--color-text);
+            background-color: transparent;
+            color: var(--color-text);
+            padding: 0.4rem 1.15rem;
+            font-weight: 600;
+            border-radius: var(--border-radius);
+            transition: all var(--transition);
+        }
+        .btn-contact:hover {
+            background-color: var(--color-primary);
+            border-color: var(--color-primary);
+            color: #0a111f;
+        }
+        .contact-container {
+            display: flex;
+            justify-content: space-around;
+            gap: 20px;
+            flex-wrap: wrap;
+            padding: 20px;
+        }
+
+        .contact-card {
+            background-color: #111827;
+            padding: 20px;
+            border-radius: 10px;
+            width: 300px;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.3);
+        }
+
+        h2 {
+            margin-top: 0;
+        }
+
+        a {
+            color: #00aaff;
+            text-decoration: none;
+        }
+
+        a:hover {
+            text-decoration: underline;
+        }
+</style>
+</head>  
+<body>
+<header role="banner">
+  <a href="page.html" class="logo" aria-label="SheildX Homepage">
+    <svg viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="M12 2L3 6v5c0 5 3 8 9 11 6-3 9-6 9-11V6l-9-4zM9 16v-4h6v4H9z"/></svg>
+    SheildX
+  </a>
+  <nav role="navigation" aria-label="Main Navigation">
+    <ul>
+      <li><a href="#">Home</a></li>
+      <li>
+        <a href="#" aria-haspopup="true" aria-expanded="false" aria-controls="shop-submenu">Shop ▾</a>
+        <ul id="shop-submenu" role="menu" aria-label="Shop Submenu">
+          <li><a href="#" role="menuitem">VPNs & Firewalls</a></li>
+          <li><a href="#" role="menuitem">Anti-Malware Software</a></li>
+          <li><a href="#" role="menuitem">Secure Routers & Devices</a></li>
+          <li><a href="#" role="menuitem">Complete Cyber-Security Kits</a></li>
+        </ul>
+      </li>
+      <li><a href="#">About</a></li>
+    </ul>
+  </nav>
+  <a href="contact.html" class="btn-contact" role="button" aria-label="Contact SheildX">Contact</a>
+</header>
+    <main role="main">
+<div class="contact-container">
+    <div class="contact-card">
+        <h2>Give us a Call</h2>
+        <p>Phone: <a href="tel:+919505271744">+ (91) 950 527 1744</a></p>
+    </div>
+
+    <div class="contact-card">
+        <h2>Visit Our Office</h2>
+        <p>Aditya University, Aditya Nagar<br>
+        Surampalem, Andhra Pradesh, India, 533437</p>
+        <p><strong>Registered Office Address</strong><br>
+        SheildX Pvt Ltd, D.No 10-135,<br>
+        Venkata Ramana Nagar, Indrapalem,<br>
+        Kakinada, Kakinada Dist., Andhra Pradesh</p>
+    </div>
+
+    <div class="contact-card">
+        <h2>Online Chat</h2>
+        <p>Email: <a href="mailto:support@sheildx.io">support@sheildx.io</a></p>
+    </div>
+</div>
+
+</body>
+</html>
